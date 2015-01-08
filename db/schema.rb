@@ -17,27 +17,26 @@ ActiveRecord::Schema.define(version: 20150108143849) do
   enable_extension "plpgsql"
 
   create_table "actors", force: :cascade do |t|
-    t.string   "name",       null: false
+    t.string   "name",       limit: 255, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "cast_members", force: :cascade do |t|
-    t.integer  "movie_id",   null: false
-    t.integer  "actor_id",   null: false
-    t.string   "character"
+    t.integer  "movie_id",               null: false
+    t.integer  "actor_id",               null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "character",  limit: 255
   end
 
-  add_index "cast_members", ["actor_id"], name: "index_cast_members_on_actor_id", using: :btree
-  add_index "cast_members", ["movie_id"], name: "index_cast_members_on_movie_id", using: :btree
-
   create_table "movies", force: :cascade do |t|
-    t.string  "title",    null: false
-    t.integer "year",     null: false
-    t.text    "synopsis"
-    t.integer "rating"
+    t.string   "title",      limit: 255, null: false
+    t.integer  "year",                   null: false
+    t.text     "synopsis"
+    t.integer  "rating"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
 end
