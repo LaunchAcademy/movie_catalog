@@ -1,7 +1,7 @@
 class MoviesController < ApplicationController
   def index
     if params[:query]
-      @movies = Movie.where("title ILIKE ?", "%" + params[:query] + "%")
+      @movies = Movie.search(params[:query])
     else
       @movies = Movie.all
     end
