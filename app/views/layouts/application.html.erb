@@ -8,7 +8,14 @@
 </head>
 <body>
 
-<%= yield %>
+  <h1>Movie Catalog</h1>
+
+  <ul>
+    <li><%= link_to "Movies", movies_path %></li>
+    <li><%= link_to "Actors", actors_path %></li>
+  </ul>
+
+  <%= yield %>
 
 </body>
 </html>
